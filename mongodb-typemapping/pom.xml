@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  	<groupId>com.shunra</groupId>
+  	<artifactId>mongodb-typemapping</artifactId>
+  	<packaging>jar</packaging>
+	<version>0.0.1</version>
+	<url>http://www.springsource.org/spring-data</url>
+
+	<properties>
+		<java-version>1.6</java-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.data.mongo.version>1.2.1.RELEASE</spring.data.mongo.version>
+		<spring.data.jpa.version>1.1.0.M1</spring.data.jpa.version>
+		<aspectj.version>1.6.8</aspectj.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<querydsl.version>2.9.0</querydsl.version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<spring-data-commons>1.5.1.RELEASE</spring-data-commons>
+	</properties>
+
+	<repositories>
+	<repository>
+		<id>mysema</id>
+		<name>mysema</name>
+		<url>http://source.mysema.com/maven2/releases</url>
+	</repository>
+		<repository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		<repository>
+			<id>JBoss Repo</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<name>JBoss Repo</name>
+		</repository>
+		    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <!--<checksumPolicy>fail</checksumPolicy>-->
+      </releases>
+      <id>dev-builder</id>
+      <name>Shunra private repository</name>
+      <url>http://dev-builder/maven2</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+	    <id>repository.springsource.release</id>
+	    <name>SpringSource GA Repository</name>
+	    <url>http://repo.springsource.org/release</url>
+	</repository>
+		
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+<!-- 	<dependency>
+        <groupId>com.google.code.morphia</groupId>
+        <artifactId>morphia</artifactId>
+        <version>0.99</version>
+</dependency> -->
+	<dependency>
+	  <groupId>com.mysema.querydsl</groupId>
+	  <artifactId>querydsl-mongodb</artifactId>
+	  <version>${querydsl.version}</version>
+	  <exclusions>
+	  	<exclusion>
+	  		<groupId>org.mongodb</groupId>
+	  		<artifactId>mongo-java-driver</artifactId>
+	  	</exclusion>
+	  </exclusions>
+	</dependency>
+	<dependency>
+		  <groupId>org.testng</groupId>
+  <artifactId>testng</artifactId>
+  <version>6.7</version>	
+	</dependency>
+		<!-- Logging dependencies -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- Spring Framework dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+    <!-- Spring Data dependencies -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-mongodb-cross-store</artifactId>
+      <version>${spring.data.mongo.version}</version>
+      <exclusions>
+      	<exclusion>
+      		<groupId>org.aspectj</groupId>
+      		<artifactId>aspectjrt</artifactId>
+      	</exclusion>
+      	<exclusion>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-core</artifactId>
+      	</exclusion>
+      	<exclusion>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-beans</artifactId>
+      	</exclusion>
+      	<exclusion>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-context</artifactId>
+      	</exclusion>
+      	      	<exclusion>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-expression</artifactId>
+      	</exclusion>
+      </exclusions>
+    </dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+  	<dependency>
+  		<groupId>org.testng</groupId>
+  		<artifactId>testng</artifactId>
+  		<version>6.7</version>
+  		<scope>test</scope>
+  	</dependency>
+	</dependencies>
+  	
+	
+	</project>
