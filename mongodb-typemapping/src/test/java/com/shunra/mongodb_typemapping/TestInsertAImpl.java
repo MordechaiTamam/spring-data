@@ -13,7 +13,7 @@ public class TestInsertAImpl extends BaseTest {
 	MongoOperations mongoOperations;
 
 	@Test
-	public void testCreateAImpl() {
+	public void testGetAImpl() {
 		List<AImpl> lst = mongoOperations.findAll(AImpl.class);
 
 		Assert.assertEquals(lst.size(), 1);
