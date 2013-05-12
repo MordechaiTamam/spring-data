@@ -13,7 +13,6 @@ public class BImpl implements BInterface {
 		this.name = name;
 	}
 
-	@Override
 	public String getName() {
 		return name;
 	}

@@ -11,7 +11,7 @@ import com.mongodb.*;
 @Configuration
 public class ContextConfiguration {
 	Log log = LogFactory.getLog(ContextConfiguration.class);
-	public static final String dbName = "mongo_type_mappaing";// UUID.randomUUID().toString().substring(0, 5);
+	public static final String dbName = "mongo_type_mappaing";
 
 	@Bean
 	@Autowired

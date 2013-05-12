@@ -33,9 +33,6 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 	@BeforeSuite(alwaysRun = true)
 	protected void springTestContextBeforeTestClass() throws Exception {
 
-		String log4jPath = getClass().getClassLoader().getResource("log4j.xml").getPath();
-
-		// LogFactory.configureAndWatch(log4jPath, null);
 		log = LogFactory.getLog(BaseTest.class);
 		super.springTestContextBeforeTestClass();
 	}
